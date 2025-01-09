@@ -11,7 +11,7 @@ export async function GET() {
     
     const data: RootResponse = await response.json();
     return Response.json(data);
-  } catch (_error) {
+  } catch {
     return Response.json({ error: 'Failed to fetch root message' }, { status: 500 });
   }
 } 
