@@ -3,7 +3,6 @@ import { WeatherResponse } from '@/config/api';
 
 export async function GET() {
   try {
-    // Fetch weather data
     const response = await fetch(`${API_BASE_URL}/weather`);
     
     if (!response.ok) {
@@ -12,7 +11,7 @@ export async function GET() {
     
     const data: WeatherResponse = await response.json();
     return Response.json(data);
-  } catch (error) {
+  } catch (_error) {
     return Response.json({ error: 'Failed to fetch weather data' }, { status: 500 });
   }
 } 

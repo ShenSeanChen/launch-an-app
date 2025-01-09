@@ -5,7 +5,6 @@ export async function GET(
   context: { params: Promise<{ name: string }> }
 ) {
   try {
-    // Wait for params to be resolved
     const { name } = await context.params;
     
     const url = new URL(`/greet/${name}`, API_URL);
@@ -20,7 +19,7 @@ export async function GET(
     
     const data = await response.json();
     return Response.json(data);
-  } catch (error) {
+  } catch (_error) {
     return Response.json(
       { error: 'Internal server error' }, 
       { status: 500 }
